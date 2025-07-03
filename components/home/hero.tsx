@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils";
 import { CircleArrowDown, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { BackgroundBeams } from "../ui/background-beams";
+
 
 const Hero = () => {
   return (
@@ -21,7 +23,7 @@ const Hero = () => {
           "inset-x-0 h-full skew-y-12"
         )}
       />
-      
+
       {/* Glass morphism overlay */}
       <div className="absolute inset-0 backdrop-blur-[2px] pointer-events-none" />
 
@@ -45,8 +47,8 @@ const Hero = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          <Badge 
-            variant="outline" 
+          <Badge
+            variant="outline"
             className="rounded-full bg-background/80 backdrop-blur-sm border-primary/20"
           >
             <Zap className="w-4 h-6 mr-2 text-primary" />
@@ -85,16 +87,16 @@ const Hero = () => {
           transition={{ delay: 0.6 }}
           className="mt-12 flex items-center justify-center gap-4"
         >
-          <Button 
-            size="lg" 
+          <Button
+            size="lg"
             className="rounded-full text-base px-8 shadow-lg hover:shadow-primary/20 transition-all"
           >
             Explore My Work
             <CircleArrowDown className="ml-2 h-5 w-5" />
           </Button>
-          <Button 
-            variant="outline" 
-            size="lg" 
+          <Button
+            variant="outline"
+            size="lg"
             className="rounded-full text-base px-8 border-primary/20 bg-background/80 backdrop-blur-sm"
           >
             Contact Me
@@ -103,13 +105,15 @@ const Hero = () => {
       </div>
 
       {/* Decorative elements */}
-      <motion.div 
+      <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
         animate={{ y: [0, -10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
         <CircleArrowDown className="h-6 w-6 text-foreground/50" />
       </motion.div>
+      <BackgroundBeams />
+
     </div>
   );
 };

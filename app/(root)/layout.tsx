@@ -1,5 +1,5 @@
 // import Navbar from "@/components/navbar-bk";
-import Footer from "@/components/footer";
+import {FancyFooter} from "@/components/footer";
 import Navbar from "@/components/navbar";
 
 export default function HomeLayout({
@@ -13,7 +13,7 @@ export default function HomeLayout({
          <div>
             {children}
          </div>
-         <Footer />
+         <FancyFooter />
       </main>
    );
 }

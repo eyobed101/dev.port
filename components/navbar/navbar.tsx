@@ -6,6 +6,7 @@ import { Logo } from "./logo";
 import { NavMenu } from "./nav-menu";
 import { NavigationSheet } from "./navigation-sheet";
 import { motion } from "framer-motion";
+import { ThemeToggleButton } from "../theme-toggle";
 
 const Navbar = () => {
   return (
@@ -29,12 +30,15 @@ const Navbar = () => {
           <NavMenu />
         </div>
 
+
         <motion.div 
           className="flex items-center gap-2"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2 }}
         >
+                  <ThemeToggleButton />
+
           <Button
             variant="ghost"
             size="icon"

@@ -8,6 +8,8 @@ import { HTMLAttributes } from "react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Typewriter } from "react-simple-typewriter";
+import { ShootingStars } from "../ui/shooting-stars";
+import { StarsBackground } from "../ui/stars-background";
 
 const About = () => {
   const ref = useRef(null);
@@ -153,6 +155,8 @@ const About = () => {
           </motion.div>
         </motion.div>
       </div>
+      <ShootingStars />
+      <StarsBackground />
     </section>
   );
 };
