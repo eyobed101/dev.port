@@ -6,6 +6,8 @@ import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Typewriter } from "react-simple-typewriter";
+import { StarsBackground } from "../ui/stars-background";
+import { ShootingStars } from "../ui/shooting-stars";
 
 interface ProjectCardProps {
   title: string;
@@ -195,6 +197,9 @@ const Projects = () => {
           ))}
         </div>
       </div>
+      <StarsBackground />
+            <ShootingStars />
+      
     </section>
   );
 };

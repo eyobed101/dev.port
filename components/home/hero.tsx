@@ -8,9 +8,12 @@ import { CircleArrowDown, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { BackgroundBeams } from "../ui/background-beams";
+import { StarsBackground } from "../ui/stars-background";
+import { ShootingStars } from "../ui/shooting-stars";
 
 
 const Hero = () => {
+  
   return (
     <div className="relative min-h-screen flex items-center justify-center px-6 pt-6 overflow-hidden">
       {/* Animated background */}
@@ -112,7 +115,9 @@ const Hero = () => {
       >
         <CircleArrowDown className="h-6 w-6 text-foreground/50" />
       </motion.div>
-      <BackgroundBeams />
+      <StarsBackground />
+      <ShootingStars />
+
 
     </div>
   );

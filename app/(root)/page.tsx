@@ -7,6 +7,8 @@ import Experience from "@/components/home/experience";
 import Hero from "@/components/home/hero";
 import Projects from "@/components/home/projects";
 import { TestimonialsSection } from "@/components/home/testimonials";
+import ServicesSection from "@/components/home/services";
+import { ContactForm } from "@/components/home/contact-form";
 
 export default function Home() {
   const containerRef = useRef(null);
@@ -55,9 +57,11 @@ export default function Home() {
         <Hero />
         <About />
         <Experience />
+        <ServicesSection />
         <Projects />
         <FeaturedBlogs />
         <TestimonialsSection />
+        <ContactForm />
       </div>
 
       {/* Subtle floating particles */}

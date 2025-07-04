@@ -6,6 +6,8 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import Image from "next/image";
+import { StarsBackground } from "../ui/stars-background";
+import { ShootingStars } from "../ui/shooting-stars";
 
 interface BlogCardProps {
   title: string;
@@ -57,7 +59,7 @@ const BlogCard = ({
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400 }}
             >
-              <Badge 
+              <Badge
                 variant="outline"
                 className="rounded-full border-primary/30 bg-background/50 backdrop-blur-sm"
               >
@@ -88,8 +90,8 @@ const BlogCard = ({
         <p className="text-muted-foreground mb-5 line-clamp-2">{excerpt}</p>
 
         <div className="mt-auto">
-          <Button 
-            variant="link" 
+          <Button
+            variant="link"
             className="px-0 text-primary group-hover:text-primary/80 transition-colors"
             asChild
           >
@@ -142,7 +144,7 @@ export const FeaturedBlogs = () => {
     <section className="relative py-28 px-6 overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <motion.div 
+        <motion.div
           className="absolute top-1/4 -left-20 w-96 h-96 rounded-full bg-primary/5 blur-3xl"
           animate={{
             x: [0, 20, 0],
@@ -157,15 +159,15 @@ export const FeaturedBlogs = () => {
       </div>
 
       <div className="max-w-screen-xl mx-auto relative z-10">
-        <motion.div 
+        <motion.div
           ref={titleRef}
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isTitleInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <Badge 
-            variant="outline" 
+          <Badge
+            variant="outline"
             className="mb-4 bg-background/80 backdrop-blur-sm border-primary/20"
           >
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
@@ -194,14 +196,14 @@ export const FeaturedBlogs = () => {
           ))}
         </div>
 
-        <motion.div 
+        <motion.div
           className="text-center mt-16"
           initial={{ opacity: 0 }}
           animate={isTitleInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.8 }}
         >
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             className="rounded-full border-primary/20 bg-background/80 backdrop-blur-sm px-8"
             asChild
           >
@@ -212,6 +214,9 @@ export const FeaturedBlogs = () => {
           </Button>
         </motion.div>
       </div>
+      <StarsBackground />
+      <ShootingStars />
+
     </section>
   );
 };

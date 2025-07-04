@@ -4,6 +4,8 @@ import { Building2, Calendar } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Typewriter } from "react-simple-typewriter";
+import { StarsBackground } from "../ui/stars-background";
+import { ShootingStars } from "../ui/shooting-stars";
 
 interface ExperienceItemProps {
   title: string;
@@ -43,12 +45,12 @@ const ExperienceItem = ({
       </div>
 
       {/* Content with glass morphism effect */}
-      <motion.div 
+      <motion.div
         className="space-y-4 p-6 rounded-xl bg-background/80 backdrop-blur-sm border border-border/20 shadow-sm hover:shadow-md transition-all"
         whileHover={{ y: -5 }}
       >
         <div className="flex items-center gap-3">
-          <motion.div 
+          <motion.div
             className="flex-shrink-0 size-10 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full flex items-center justify-center border border-border/20"
             whileHover={{ rotate: 10 }}
           >
@@ -58,7 +60,7 @@ const ExperienceItem = ({
             {company}
           </span>
         </div>
-        
+
         <div>
           <h3 className="text-xl font-medium">{title}</h3>
           <div className="flex items-center gap-2 mt-2 text-sm text-muted-foreground">
@@ -66,13 +68,13 @@ const ExperienceItem = ({
             <span>{period}</span>
           </div>
         </div>
-        
+
         <p className="text-muted-foreground">{description}</p>
-        
+
         <div className="flex flex-wrap gap-2">
           {technologies.map((tech) => (
-            <Badge 
-              key={tech} 
+            <Badge
+              key={tech}
               variant="outline"
               className="rounded-full border-primary/20 bg-background/50 hover:bg-primary/5"
             >
@@ -125,15 +127,15 @@ const Experience = () => {
       </div>
 
       <div className="max-w-screen-lg mx-auto relative z-10">
-        <motion.div 
+        <motion.div
           ref={titleRef}
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isTitleInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <Badge 
-            variant="outline" 
+          <Badge
+            variant="outline"
             className="mb-4 bg-background/80 backdrop-blur-sm border-primary/20"
           >
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
@@ -162,6 +164,9 @@ const Experience = () => {
           ))}
         </div>
       </div>
+      <StarsBackground />
+      <ShootingStars />
+
     </section>
   );
 };

@@ -6,6 +6,8 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import Image from "next/image";
+import { StarsBackground } from "../ui/stars-background";
+import { ShootingStars } from "../ui/shooting-stars";
 
 interface TestimonialCardProps {
   name: string;
@@ -63,10 +65,10 @@ const TestimonialCard = ({
       {/* Author Info */}
       <div className="flex items-center gap-4 mt-auto pt-4 border-t border-border/20">
         <div className="relative h-14 w-14 rounded-full overflow-hidden border-2 border-primary/20">
-          <Image 
-            src={image} 
-            alt={name} 
-            fill 
+          <Image
+            src={image}
+            alt={name}
+            fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
@@ -116,7 +118,7 @@ export const TestimonialsSection = () => {
     <section className="relative py-28 px-6 overflow-hidden bg-gradient-to-b from-background to-secondary/5">
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <motion.div 
+        <motion.div
           className="absolute bottom-1/4 -right-20 w-96 h-96 rounded-full bg-secondary/5 blur-3xl"
           animate={{
             x: [0, -20, 0],
@@ -131,15 +133,15 @@ export const TestimonialsSection = () => {
       </div>
 
       <div className="max-w-screen-xl mx-auto relative z-10">
-        <motion.div 
+        <motion.div
           ref={titleRef}
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isTitleInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <Badge 
-            variant="outline" 
+          <Badge
+            variant="outline"
             className="mb-4 bg-background/80 backdrop-blur-sm border-primary/20"
           >
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
@@ -168,14 +170,14 @@ export const TestimonialsSection = () => {
           ))}
         </div>
 
-        <motion.div 
+        <motion.div
           className="text-center mt-16"
           initial={{ opacity: 0 }}
           animate={isTitleInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.8 }}
         >
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             className="rounded-full border-primary/20 bg-background/80 backdrop-blur-sm px-8"
             asChild
           >
@@ -186,6 +188,9 @@ export const TestimonialsSection = () => {
           </Button>
         </motion.div>
       </div>
+      <StarsBackground />
+      <ShootingStars />
+
     </section>
   );
 };
