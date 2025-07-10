@@ -7,31 +7,36 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Badge } from '@/components/ui/badge';
 import { X } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 export function ProjectsFilter({
   categories,
   tags,
-  searchParams,
 }: {
   categories: { id: string; name: string; slug: string }[];
   tags: { id: string; name: string; slug: string }[];
-  searchParams: {
-    search?: string;
-    category?: string;
-    tag?: string;
-    featured?: string;
-    sort?: string;
-  };
 }) {
   const router = useRouter();
   const params = useSearchParams();
+  const [isClient, setIsClient] = useState(false);
+
+  // Get search params with proper client-side handling
+  const search = params?.get('search') || '';
+  const category = params?.get('category') || '';
+  const tag = params?.get('tag') || '';
+  const featured = params?.get('featured') || '';
+  const sort = params?.get('sort') || 'newest';
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const clearFilters = () => {
     router.push('/projects');
   };
 
   const setFilter = (key: string, value: string) => {
-    const newParams = new URLSearchParams(params);
+    const newParams = new URLSearchParams(params?.toString());
     if (value) {
       newParams.set(key, value);
     } else {
@@ -39,6 +44,9 @@ export function ProjectsFilter({
     }
     router.push(`/projects?${newParams.toString()}`);
   };
+
+  // Don't render on server to avoid hydration mismatch
+  if (!isClient) return null;
 
   return (
     <motion.div
@@ -51,13 +59,13 @@ export function ProjectsFilter({
         <div className="relative flex-1">
           <Input
             placeholder="Search projects..."
-            value={searchParams.search || ''}
+            value={search}
             onChange={(e) => setFilter('search', e.target.value)}
           />
         </div>
 
         <Select
-          value={searchParams.sort || 'newest'}
+          value={sort}
           onValueChange={(value) => setFilter('sort', value)}
         >
           <SelectTrigger className="w-[180px]">
@@ -74,7 +82,7 @@ export function ProjectsFilter({
 
       <div className="flex flex-wrap items-center gap-4">
         <Select
-          value={searchParams.category || ''}
+          value={category}
           onValueChange={(value) => setFilter('category', value)}
         >
           <SelectTrigger className="w-[180px]">
@@ -91,7 +99,7 @@ export function ProjectsFilter({
         </Select>
 
         <Select
-          value={searchParams.tag || ''}
+          value={tag}
           onValueChange={(value) => setFilter('tag', value)}
         >
           <SelectTrigger className="w-[180px]">
@@ -108,13 +116,13 @@ export function ProjectsFilter({
         </Select>
 
         <Button
-          variant={searchParams.featured ? 'default' : 'outline'}
-          onClick={() => setFilter('featured', searchParams.featured ? '' : 'true')}
+          variant={featured ? 'default' : 'outline'}
+          onClick={() => setFilter('featured', featured ? '' : 'true')}
         >
           Featured Only
         </Button>
 
-        {(searchParams.search || searchParams.category || searchParams.tag || searchParams.featured) && (
+        {(search || category || tag || featured) && (
           <Button variant="ghost" onClick={clearFilters} className="flex items-center gap-1">
             Clear filters
             <X className="h-4 w-4" />
