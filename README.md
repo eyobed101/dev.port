@@ -1,68 +1,183 @@
-# Next Auth Starter 🚀
+# 🚀 Next.js Portfolio Starter Template
 
-Next Auth Starter is a Next.js 15 boilerplate with built-in authentication using **BetterAuth**. It supports **Google Login** and **BetterAuth credentials**, providing a solid foundation for any Next.js project requiring authentication.
+A beautifully designed, developer-friendly portfolio starter built with **Next.js 15 App Router**, **Tailwind CSS v4**, **Prisma**, and **Better Auth** for modern authentication. Ideal for developers looking to showcase their work, skills, and personal brand in a performant and scalable way.
 
-## ✨ Features
+---
 
-- 🔐 **Authentication with BetterAuth**
-- 🔑 **Google OAuth Login**
-- 🎨 **Modern UI with Tailwind CSS & ShadCN**
-- 🗄️ **Database integration with Prisma & PostgreSQL**
-- ⚡ **Optimized with Next.js 15 App Router**
+## 🌟 Features
 
-## 🛠️ Tech Stack
+- 🔐 **Authentication with Better Auth**
+- 🎨 **Modern UI components using Radix UI + Tailwind CSS**
+- 💼 **Responsive Portfolio Pages (Projects, Experience, Contact)**
+- 🌗 **Dark Mode Support with `next-themes`**
+- 🖼️ **Framer Motion Animations**
+- 🧩 **Form Validation with Zod + React Hook Form**
+- ⚡ **App Router (Next.js 15 with Turbopack)**
+- 🧠 **Zod + TypeScript strict typing**
+- 📧 **Email Contact Form with Resend (Mail API)**
 
-- **Framework:** Next.js 15
-- **Auth Provider:** BetterAuth (Credentials & Google Login)
-- **Database:** PostgreSQL with Prisma ORM
-- **Styling:** Tailwind CSS, ShadCN
+---
 
-## 🚀 Getting Started
+## 🛠 Tech Stack
 
-### 1️⃣ Install Dependencies
+| Category       | Tech                                             |
+|----------------|--------------------------------------------------|
+| Framework      | [Next.js 15](https://nextjs.org)                |
+| Styling        | [Tailwind CSS v4](https://tailwindcss.com)      |
+| Animations     | [Framer Motion](https://www.framer.com/motion/) |
+| Auth           | [Better Auth](https://www.npmjs.com/package/better-auth) |
+| UI Components  | [Radix UI](https://www.radix-ui.com/) + `shadcn/ui` |
+| Forms & Validation | `react-hook-form`, `zod`, `@hookform/resolvers` |
+| Icons          | [Lucide](https://lucide.dev)                    |
+| Database ORM   | [Prisma](https://www.prisma.io)                 |
+| Email Service  | [Resend](https://resend.com)                    |
+| Notifications  | [`sonner`](https://sonner.emilkowal.ski/)       |
 
-```bash
-bun install
-```
+---
 
+## ⚙️ Getting Started
 
-### 2️⃣ Set Up Environment Variables
-Create a .env file and add the necessary credentials:
-
-```bash
-# Secret key for BetterAuth (Use a strong, random secret)
-BETTER_AUTH_SECRET=<your_better_auth_secret>
-
-# The base URL of your application (Update this for production)
-BETTER_AUTH_URL=http://localhost:3000  # Change this to your production domain in deployment
-
-# PostgreSQL Database Connection URL (Use environment variables in production)
-DATABASE_URL="postgresql://<username>:<password>@<host>/<database_name>?sslmode=require"
-
-# Google OAuth Credentials (Required for social login)
-GOOGLE_CLIENT_ID=<your_google_client_id>
-GOOGLE_CLIENT_SECRET=<your_google_client_secret>
-```
-
-
-### 3️⃣ Run Database Migrations
+### 1. Clone the repo
 
 ```bash
-bunx prisma migrate dev
-```
+git clone https://github.com/your-username/nextjs-portfolio.git
+cd nextjs-portfolio
+````
 
-
-### 4️⃣ Start the Development Server
+### 2. Install dependencies
 
 ```bash
-bun dev
+npm install
+# or
+yarn install
 ```
 
-The app will be available at http://localhost:3000.
+### 3. Set up your environment variables
 
-## 🔗 Live Demo
-Check out the live version: [Auth Starter](https://better-auth-livid.vercel.app/)
+Create a `.env` file based on `.env.example`:
 
+```env
+DATABASE_URL=postgresql://USER:PASSWORD@localhost:5432/db
+NEXTAUTH_SECRET=your-auth-secret
+RESEND_API_KEY=your-resend-key
+```
 
-# Built by Aayush Ghimire
+### 4. Set up Prisma
 
+```bash
+npx prisma db push
+```
+
+(Optional: seed your database if needed)
+
+### 5. Start the development server
+
+```bash
+npm run dev
+```
+
+---
+
+## 📁 Folder Structure
+
+```
+.
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── dashboard/ (protected)
+├── components/
+│   ├── ui/
+│   └── shared/
+├── lib/
+│   ├── auth/
+│   └── utils/
+├── prisma/
+│   └── schema.prisma
+├── public/
+├── styles/
+├── .env.example
+├── tailwind.config.ts
+├── next.config.js
+└── README.md
+```
+
+---
+
+## 📸 Pages Included
+
+* `/` – Hero, About, Projects, Contact
+* `/dashboard` – Protected (login required)
+* `/login`, `/register`, `/forgot-password` – Auth pages via `better-auth`
+
+---
+
+## 🔐 Auth with Better Auth
+
+* Email & password login
+* JWT-based session handling
+* Magic link and social login ready (via optional config)
+* Simple integration with Prisma user model
+
+---
+
+## 🧠 Customization Tips
+
+* Modify Tailwind theme in `tailwind.config.ts`
+* Update metadata in `app/layout.tsx`
+* Add more projects/components in `app/page.tsx` or split into `/projects`
+* Use `prisma studio` to manage data:
+
+  ```bash
+  npx prisma studio
+  ```
+
+---
+
+## 🧪 Scripts
+
+```bash
+npm run dev         # Start dev server
+npm run build       # Build for production
+npm run start       # Start production server
+npm run lint        # Lint the project
+npx prisma studio   # Open Prisma Studio
+```
+
+---
+
+## 📦 Deployment
+
+* ✅ Works perfectly with [Vercel](https://vercel.com/)
+* Supports all platforms with Node.js 18+
+
+---
+
+## 🧑‍💻 Author
+
+Made with 💙 by [Your Name](https://github.com/your-username)
+Feel free to fork and customize!
+
+---
+
+## 📄 License
+
+Licensed under the MIT License.
+You’re free to use, modify, and distribute this template for personal and commercial projects.
+
+---
+
+## ✨ Preview
+
+> *(Insert screenshots or Vercel deployment preview here)*
+
+---
+
+**Build your portfolio. Share your work. Impress the world.**
+
+```
+
+---
+
+Let me know if you'd like a `live preview`, template upload to GitHub, or more personalization (e.g., adding project cards, testimonials, or blog support).
+```
